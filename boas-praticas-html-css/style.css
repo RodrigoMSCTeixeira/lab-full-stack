@@ -1,0 +1,79 @@
+/* Formatação do CSS
+Mantenha sempre a formatação dos seletores CSS em uma única linha e cada propriedade em sua própria linha. Todas as declarações devem ser indentadas.
+Ou seja, insira um reforço com 2 ou 4 espaço para estilos relacionados ou filhos.
+Dessa forma, a organização fica mais simples de ser visualizados por desenvolvedores iniciantes. */
+
+.post-list li a {
+  color: #a8a8a8;
+}
+
+.post-list li a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.post-list li .author a,
+.post-list li .author a:hover {
+  color: #f30;
+  text-transform: uppercase;
+}
+
+/* Pixels vs. Ems
+O “px” é utilizado como unidade de medida para definir por exemplo o font-size, pelo fato de oferecer o controle absoluto sobre o texto.
+A unidade de medida “em” acabou se tornando popular por conta da compatibilidade com o Internet Explorer 6, já que não redimensiona pixel com base em texto.
+Atualmente, basicamente todos os principais navegadores (Incluindo o IR7 e IE8) suportam texto redimensionado com unidade em “px” e/ou zoom na página inteira.
+Desde que o IE6 foi considerado obsoleto, é preferível usar tamanho em pixels. A unidade line-height também deve ser usada, porque não herda um valor percentual 
+do seu elemento pai, mas é baseado no multiplicador do font-size. */
+
+#selector {
+  font-size: 13px;
+  line-height: 1.5; /* 13 * 1.5 = 19.5 ~ Arredonde para 20px. */
+}
+
+/* Código Ruim  */
+#selector {
+  font-size: 0.813em;
+  line-height: 1.25em;
+}
+
+/* Evite seletores
+Como melhores práticas de desenvolvimento web evite utilizar seletores que não sejam necessários.
+Exemplo: Seletor ID para a tag body.
+Essa prática pode confundir o seu CSS, caso você esqueça para que serve esse seletor. Neste caso é muito mais intuitivo utilizar a própria tag.
+No caso de divs, que geralmente existem em maior quantidade no código, é mais interessante utilizar class. */
+
+/* Cuidado com a redundância
+É muito comum, principalmente quem está iniciando acabar escrevendo código redundante.
+Mas não se desespere, vou te explicar para você entender.
+Por exemplo, você tem uma div e dentro dela um button. */
+
+/* Id ou Class?
+É muito importante sempre dar preferencia para class. Com isso seu código fica muito mais fácil de ser atualizado e reutilizado.
+Utilizar o ID deixa seu código muito engessado. Isso porque você não pode ter mais de um e não pode repeti-lo.
+No caso da class, você pode definir agora para um elemento e depois adicionar em outro elemento que precise.
+Você pode criar uma class que tenha um CSS muito utilizado em vários elementos e depois utilizar outras classes para especificar outras coisas desse elemento.
+Por exemplo:
+Você tem dois elementos na página (.menu e .blog) que têm funções e visuais diferentes.
+Mas os dois seguem a base visual do site que é um fundo rosa, com borda redonda e uma sombra. Ao invés de copiar as propriedades, crie uma nova classe base pra esses elementos: */
+
+/* Cuidado com os números mágicos
+Toda vez que você escreve um margin-top: 67px ou um width: 321px uma tragédia acontece.
+Faça o máximo possível para evitar números mágicos no seu CSS que são calculados arbitrariamente.
+Pior ainda aquele número mágico para alinhar algo (tipo um top:-1px) que certamente está levando em conta a renderização em um certo navegador, porém vai quebrar em outro.
+Isso irá deixar o seu CSS pouco reaproveitável e precisará de manutenção constante. Quer alinhar um ícone com texto? Aprenda a usar o vertical-align:middle.
+Nesse caso como resolver o width? É o que veremos no próximo tópico: */
+
+/* Use unidades flexíveis
+Números mágicos podem ser evitados em muitos casos usando unidades relativas como porcentagens.
+Vamos supor que você tem uma página com 940px de largura e precisa dividir em 5 colunas, não escreva width:188px porque provavelmente você nunca irá se lembrar de onde surgiu esse valor.
+Utilize width:20% que irá organizar de maneira mais óbvia 1/5 da página para cada coluna.
+Se puder faça todas as suas unidades de layout utilizando porcentagens. Isso vai fazer seu design ser flexível e não depender do tamanho do navegador.
+A Web é uma mídia elástica e confinar sua página a pixels estáticos é transformar a Web em uma mídia limitada. */
+
+/* Aprenda a nomear suas classes
+Como boa parte das boas práticas citadas aqui envolvem classes, é bom saber nomeá-las direito.
+A regra óbvia, que você já segue, é criar nomes legíveis e fáceis de entender:
+Use .banner-principal ao invés de .bnnPri.
+Outro ponto que você deve entender é que nossas classes não devem ter semântica de visual e sim de conteúdo.
+Se as suas classes forem “box-azul” ou “menu-superior” e algum dia esses elementos não forem mais azul ou superior, o nome da classe perde o significado.
+Seja simples e preciso. Utilize “box”, “menu”, “painel” e por aí vai. */
